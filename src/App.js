@@ -1,17 +1,14 @@
-//import TableMob from "./components/TableMob"
 
-import GithubUser from "./components/GithubUser"
-
-
+import Parent from './components/Parent'
 
 
 function App() {
   
 
   return (
-    <div className="App">
-      <GithubUser/>
-    </div>
+    <div className="flex flex-row items-center justify-center h-screen bg-gray-100 font-sans text-lg">  
+      <Parent/>
+      </div>
   )
 }
 
