@@ -10,7 +10,9 @@ const Profile = () => {
             const data = await response.json();
             setUsers(data);
 
+            
         }
+        fetchData();
     })
 
   return (
