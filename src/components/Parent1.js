@@ -4,11 +4,10 @@ import Child2 from './Child2'
 export const MyConstext = createContext ()
 
 const Parent1 = () => {
-  const message1 = "Hello from Parent1";
-  const message2 = "Another message from Parent1";
+  const {message, setMessage} = 'hello from parent'
 
   return (
-    <MyConstext.Provider value={{message1, message2}}>
+    <MyConstext.Provider value={{message1: message, message2: setMessage}}>
       <Child1/>
       <Child2/>
     </MyConstext.Provider>
