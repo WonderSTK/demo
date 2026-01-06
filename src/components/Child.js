@@ -34,7 +34,7 @@ const Child = () => {
   };
 
   return (
-    <div className="max-w-sm mx-auto mt-10 p-4 boorder rounded">
+    <div className="max-w-sm mx-auto mt-10 p-4 border rounded">
       <h1 className="text-lg font-semibold mb-4">CRUD App</h1>
 
       <div className="flex gap-2 mb-4">
@@ -72,7 +72,9 @@ const Child = () => {
               <button onClick={() => editItem(index)} className="text-sm text-blue-600">
                 Edit
               </button>
-              <button onClick={() => deleteItem(index)} className="text-sm text-green-600">Delete</button>
+              <button onClick={() => deleteItem(index)} className="text-sm text-green-600">
+                Delete
+              </button>
             </div>
           </li>
         ))}
