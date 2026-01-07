@@ -1,16 +1,33 @@
 import React, { useState } from 'react'
 
-const ToDo = () => {
+const Todo = () => {
 
-    const [input, setInput] = useState(null)
-    const [editIndex, setEditIndex] = useState(0)
+    const [input, setInput] = useState("")
+    const [editIndex, setEditIndex] = useState(null)
     const [items, setItems] = useState([])
-    const updateItem = () => {
-
-    }
 
     const addItem = () => {
+        if(!input.trim()) return;
+            setItems([...items, input]);
+            setInput("");
+    }
 
+    const updateItem = () => {
+        if(!input.trim()) return;
+        const updated = [...items]
+        updated[editIndex] = input;
+        setItems(updated)
+        setInput("");
+    }
+
+
+    const editItem = (index) => {
+        setInput(items[index])
+        setEditIndex(index)
+    }
+
+    const deleteItem = (index) => {
+        setItems(items.filter((_, i) => i !== index))
     }
 
   return (
@@ -19,11 +36,11 @@ const ToDo = () => {
         <div className='flex gap-2 mb-10'>
             <input 
                 value={input}
-                onChange={setInput((e) => e.target.value)}
+                onChange={(e) => setInput(e.target.value)}
                 placeholder='Add your Item'
                 className='flex-1 px-4 border border-l-amber-900 rounded'
             />
-            {editIndex !== 0 ? (
+            {editIndex !== null ? (
                     <button
                         onClick={updateItem}
                         className='px-3 py-1 bg-blue-500 text-white rounded'
@@ -39,10 +56,20 @@ const ToDo = () => {
             }
         </div>
         <ul className='space-y-2'>
-            {items}
+            {items.map((item, index) => (
+                <li key={index}
+                className='flex justify-between items-center px-3 py-1 rounded'
+                >
+                    <span>{item}</span>
+                    <div className='flex gap-2'>
+                    <button onClick={()=> editItem(index)} className='text-sm text-blue-500'>Edit</button>
+                    <button onClick={() => deleteItem(index)} className='text-sm text-green-500'>Delete</button>
+                    </div>
+                </li>
+            ))}
         </ul>
     </div>
   )
 }
 
-export default ToDo
+export default Todo
